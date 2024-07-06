@@ -10,8 +10,6 @@ N'hésitez pas à fork le script et à le modifier selon vos besoins mais SVP su
 
 Le but de ce tuto est d’installer une Arch stock avec un minimum de paquets, selon nos besoins pour de la bureautique et ou du gaming. 
 
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> Cette icône vous redirige vers mes vidéos sur certaines parties de ce tuto
-
 ## Conditions
 
 Ce tuto est optimisé pour les choix suivant : 

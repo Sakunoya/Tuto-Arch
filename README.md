@@ -107,8 +107,6 @@ N'hésitez pas à faire remonter les bugs merci :)
 
 ### NVIDIA (restez en X11 au moins jusqu’à la sortie de KDE 6)
 
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Debian et Arch Linux Gnome Wayland avec Nvidia (Debian dans le doc)](https://www.youtube.com/watch?v=DVkWLvwtQ18)
-
 1. **Installer les composants core :**
     ```bash
     yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda
@@ -259,10 +257,6 @@ yay -S steam
 
 - Lutris est un gestionnaire de jeux FOSS (libre, gratuit et open source) pour les systèmes d'exploitation basés sur Linux.
 
-    <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Paramétrer Lutris pour PC portable Intel/Nvidia ](https://www.youtube.com/watch?v=Am3pgTXiUAA)
-
-    <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Tuto Diablo IV bêta LINUX sur lutris ](https://www.youtube.com/watch?v=090SyVMtbCM)
-
     ```bash
     sudo pacman -S --needed lutris wine-staging
     ```
@@ -286,9 +280,7 @@ yay -S goverlay --needed
 ### Augmenter la compatibilité des jeux Windows
 
 - L'objectif est d'améliorer la compatibilité avec les jeux Windows via Wine ou Steam. (Voir [ProtonDB](https://www.protondb.com/))
-    
-    <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Gaming LINUX supprimer les crashs / augmenter la compatibilité](https://youtu.be/sr4RgshrUYY)
-
+  
     ```bash
     kate /etc/sysctl.d/99-sysctl.conf
     ```
@@ -333,7 +325,6 @@ Installer fish.
 
 [TKG](https://github.com/Frogging-Family) propose un build de kernel hautement personnalisable qui - fournit une sélection de corrections et d'ajustements visant à améliorer les performances des ordinateurs de bureau et des jeux.
 
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Kernel TKG sur Arch + Booster ses perfs](https://youtu.be/43yYIWMnDJA)
 ```bash
 git clone https://github.com/Frogging-Family/linux-tkg.git
 cd linux-tkg
@@ -354,7 +345,6 @@ Dire oui à tout pour bien tout écraser avec les nouveaux paquets.
 
 Nvidia-all est une intégration du driver nvidia par TkG. Il comporte des patchs de support pour les nouveaux kernels ainsi que les drivers vulkan-dev.
 
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Vous utilisez Arch et Nvidia regardez ça !](https://youtu.be/43yYIWMnDJA)
 ```bash
 git clone https://github.com/Frogging-Family/nvidia-all.git
 cd nvidia-all
@@ -368,7 +358,6 @@ Dire oui à tout pour bien tout écraser avec les nouveaux paquets.
 
 Anciennement connu sous le nom de xdg-app, est un utilitaire de déploiement de logiciels et de gestion de paquets pour Linux. Il est présenté comme offrant un environnement "bac à sable" dans lequel les utilisateurs peuvent exécuter des logiciels d'application de manière isolée du reste du système.
 
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [MangoHUD, Goverlay, Steam, Lutris FLATPAK !](https://www.youtube.com/watch?v=1dha2UDSF4M)
 ```bash
 yay -S flatpak flatpak-kcm
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -395,15 +384,7 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
     yay -S sof-firmware
     ```
 
-- Pour de l’aide, venez sur le Discord GLF (fr/en): [Discord GLF](http://discord.gg/EP3Jm8YMvj)
-
 ## Sources
 
 Source et liens utiles
 - [ArchWiki](https://wiki.archlinux.org/)
-
-    <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Fonctionnement du WIKI d'Arch.](https://www.youtube.com/watch?v=TQ3A9l2N5lI)
-
-- [Site GLF](https://www.gaminglinux.fr/)
-- [Discord GLF](http://discord.gg/EP3Jm8YMvj)
-- [Ma chaine Youtube](https://www.youtube.com/@Cardiacman)

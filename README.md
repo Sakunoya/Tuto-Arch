@@ -1,4 +1,4 @@
-# TUTO ARCH LINUX 
+# TUTO ARCH LINUX //!\\ ATTENTION CECI EST SEULEMENT EN PHASE DE PROTOYPE ET C'EST EN WORK IN PROGRESS, CE N'EST PAS UN TUTO STABLE POUR LE MOMENT CAR C'EST A DES FINS DE TESTE (il est actuellement inutilisable), DEBUTANTS, NE PAS INSTALLER!! //!\\
 
 ## Fonctionnement du tuto
 
@@ -21,12 +21,7 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
 
 ## INSTALLATION
 
-1. **Mettre le clavier en FR**
-    ```bash
-    loadkeys fr
-    ```
-
-2. **Paramétrer votre Wi-Fi**
+1. **Paramétrer votre Wi-Fi**
     Tapez
     ```bash
     iwctl
@@ -37,7 +32,7 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
     ```
     Entrez le mot de passe de votre wifi puis `quit` pour quitter iwctl
 
-2. **Archinstall**
+2. **script d'install**
     ```bash
     python <(curl -L ac.rawleenc.dev/main)
     ```
@@ -64,7 +59,23 @@ Script à exécuter sur une installation propre.
     VerbosePkgLists <- 
     ParallelDownloads = 12 <-
     ```
-3. Installation de yay,
+
+### PERFORMANCE
+
+1. Latence des PCI
+
+    Reset les timers des de tout les PCI devices
+    ```bash
+    sudo setpci -v -s '*:*' latency_timer=20
+    sudo setpci -v -s '0:0' latency_timer=0
+    ```
+
+    Configuration des timers pour les cartes son
+    ```bash
+    sudo setpci -v -d "*:*:04xx" latency_timer=80
+    ```
+   
+4. Installation de yay,
 
    [Yay](https://github.com/Jguer/yay) est un outil pratique pour gérer l'installation et la mise à jour de logiciels sur les systèmes basés sur Arch Linux.
     ```bash
@@ -108,6 +119,13 @@ Script à exécuter sur une installation propre.
 
 2. **Activer nvidia-drm.modeset=1 :**
 
+    ```bash
+  kate usr/lib/modprobe.d/nvidia.conf
+ 
+  ```bash
+   options nvidia NVreg_UsePageAttributeTable=1 NVreg_InitializeSystemMemoryAllocations=0
+   options nvidia_drm modeset=1 fbdev=1
+   ```
    - **Si systemd boot**
 
     Dans le dossier:
@@ -115,26 +133,8 @@ Script à exécuter sur une installation propre.
    ```bash
    /boot/loader/entries/
    ```
-   Il y a plusieurs fichiers .conf, il faut ajouter nvidia-drm.modeset=1 à la ligne options de chaque fichiers,
-   exemple : options                 root=PARTUUID=fb680c54-466d-4708-a1ac-fcc338ed57f1 rw rootfstype=ext4 nvidia-drm.modeset=1
 
-    - **Si grub**
-
-    ```bash
-   kate /etc/default/grub
-   ```
-
-   Ligne "grub_cmdline_linux_default=" ajouter **nvidia-drm.modeset=1**
-
-   exemple : GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet nvidia-drm.modeset=1"
-
-    puis :
-
-    ```bash
-   sudo grub-mkconfig -o /boot/grub/grub.cfg
-   ```
-   
-4. **Charger les modules Nvidia en priorité au lancement de Arch :**
+3. **Charger les modules Nvidia en priorité au lancement de Arch :**
     ```bash
     kate /etc/mkinitcpio.conf
     ```
@@ -146,7 +146,7 @@ Script à exécuter sur une installation propre.
     ```bash
     MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)
     ```
-5. **hook mkinitcpio** :
+6. **hook mkinitcpio** :
     ```bash
     sudo mkdir /etc/pacman.d/hooks/
     kate /etc/pacman.d/hooks/nvidia.hook
@@ -216,12 +216,12 @@ yay -S reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-deskt
 
 ### Logiciels divers
 ```bash
-yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-disk-utility visual-studio-code-bin
+yay -S vlc discord gimp obs-studio flameshot
 ```
 
 ### Logiciels KDE
 ```bash
-yay -S xdg-desktop-portal-kde xdg-desktop-portal-gtk okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor
+yay -S xdg-desktop-portal-kde xdg-desktop-portal-gtk okular print-manager kdenlive gwenview partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor
 ```
 
 ### Pare-feu
@@ -282,7 +282,57 @@ yay -S goverlay --needed
     ```bash
     vm.max_map_count=16777216
     ```
+- (titre encore inconnu)
+  
+    ```bash
+    kate /etc/sysctl.d/99-arch-setting.conf
+    ```
+    
+    ```bash
+    kernel.nmi_watchdog = 0
+    ```
 
+    ```bash
+    net.core.somaxconn = 8192
+    ```
+
+    ```bash
+    net.ipv4.tcp_fastopen = 3
+    ```
+
+    ```bash
+    net.ipv4.tcp_congestion_control = bbr
+    ```
+
+    ```bash
+    net.ipv4.tcp_syncookies = 1
+    ```
+
+    ```bash
+    net.ipv4.tcp_ecn = 1
+    ```
+
+    ```bash
+    net.ipv4.tcp_timestamps = 0
+    ```
+
+    ```bash
+    net.ipv4.tcp_slow_start_after_idle = 0
+    ```
+
+    ```bash
+    net.ipv4.tcp_rfc1337 = 1
+    ```
+    
+    ```bash
+    fs.inotify.max_user_watches = 524288
+    ```
+
+    ```bash
+    fs.file-max = 2097152
+    ```
+
+    
 ## BONUS
 
 ### Timeshift
@@ -382,3 +432,4 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 
 Source et liens utiles
 - [ArchWiki](https://wiki.archlinux.org/)
+- [Github CachyOS](https://github.com/CachyOS)

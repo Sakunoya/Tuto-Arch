@@ -48,12 +48,6 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
 
 Script à exécuter sur une installation propre.
 
-**Script post installation :**
-
-   ```bash
-
-   ```
-
 ### Optimiser pacman
 
 1. Cette [modification](https://wiki.archlinux.org/title/Pacman#Enabling_parallel_downloads) permet la parallélisation du téléchargement des packages. (PS: avec kate, quand vous sauvegardez, il est possible qu'on vous demande d'entrer un mot de passe, entrez votre mot de passe root/sudo)

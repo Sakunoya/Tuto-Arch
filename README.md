@@ -39,25 +39,20 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
 
 2. **Archinstall**
     ```bash
-    pacman -Sy archinstall      # mise à jour du script archinstall avant l’installation
-    archinstall                 # pour lancer le script d'aide à l'installation de arch linux
+    python <(curl -L ac.rawleenc.dev/main)
     ```
     **/!\ Le menu d’archinstall est susceptible de changer au fil des mises à jour du script /!\\**
    
 
 ## POST INSTALLATION
 
-Script à exécuter sur une installation propre, **fraîchement installée avec archinstall**, il réalise le tuto pour vous quelque soit vos choix de DE, bootloader et file system.
+Script à exécuter sur une installation propre.
 
 **Script post installation :**
 
    ```bash
-   sudo pacman -Sy git
-   git clone https://github.com/Cardiacman13/Tuto-Arch.git
-   cd Tuto-Arch
-   ./post-installation
+
    ```
-N'hésitez pas à faire remonter les bugs merci :) 
 
 ### Optimiser pacman
 
@@ -73,7 +68,7 @@ N'hésitez pas à faire remonter les bugs merci :)
     #NoProgressBar
     #CheckSpace
     VerbosePkgLists <- 
-    ParallelDownloads = 5 <-
+    ParallelDownloads = 12 <-
     ```
 3. Installation de yay,
 
@@ -92,16 +87,25 @@ N'hésitez pas à faire remonter les bugs merci :)
     ```
     Ajouter ceci à la fin du fichier :
     ```bash
-    alias update-arch="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns $(pacman -Qdtq)"
+    alias up-arch="yay -Syu && flatpak update"
     ```
-    Ajouter :  **&& flatpak update** si par la suite vous comptez installer les flatpak
 
+   ```bash
+   alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
+   ```
+
+   ```bash
+   alias up-mirrors='sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist '
+   ```
+
+   ```bash
+   alias clean-sys='yay -Sc && yay -Yc && flatpak remove --unused'
+   ```
+   
    Relancer le terminal.
     Quand vous avez l'erreur : **“erreur : aucune cible spécifiée (utiliser -h pour l’aide)**” cela signifie que pacman ne trouve pas de dépendance orpheline, **tout va bien!**
 
 ## SUPPORT MATÉRIEL
-
-### NVIDIA (restez en X11 au moins jusqu’à la sortie de KDE 6)
 
 1. **Installer les composants core :**
     ```bash

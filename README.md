@@ -119,8 +119,9 @@ Script à exécuter sur une installation propre.
 
 2. **Activer nvidia-drm.modeset=1 :**
 
-    ```bash
+  ```bash
   kate usr/lib/modprobe.d/nvidia.conf
+  ```
  
   ```bash
    options nvidia NVreg_UsePageAttributeTable=1 NVreg_InitializeSystemMemoryAllocations=0

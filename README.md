@@ -34,7 +34,6 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
     ```bash
     python <(curl -L ac.rawleenc.dev/main)
     ```
-    **/!\ Le menu d’archinstall est susceptible de changer au fil des mises à jour du script /!\\**
    
 
 ## POST INSTALLATION

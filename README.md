@@ -4,7 +4,7 @@
 
 **À FAIRE DANS L'ORDRE !**
 
-Le but de ce tuto est d’installer une Arch stock avec un minimum de paquets, selon nos besoins pour de la bureautique et ou du gaming. 
+Le but de ce tuto est d’installer une Arch et d'en tirer les meilleurs performances possible
 
 ## Conditions
 
@@ -13,9 +13,7 @@ Ce tuto est optimisé pour les choix suivant :
 - systemd-boot
 - Ext4
 - KDE
-- Une Arch pure (incompatible avec Garuda, EndeavourOS, Manjaro…) 
-
-Néanmoins, si vous savez ce que vous faites, les modifications pour d’autres choix sont minimes.
+- Maximiser les performances pour une utilisation polyvalente professionnel/gaming
 
 Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/download/)
 
@@ -41,7 +39,7 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
 
 ## POST INSTALLATION
 
-Script à exécuter sur une installation propre.
+Script à exécuter sur une installation propre. (à venir)
 
 ### Optimiser pacman
 
